@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.njpi.xyh.seckill.dao.UserDao">
+
+    <resultMap type="com.njpi.xyh.seckill.entity.User" id="UserMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="salt" column="salt" jdbcType="VARCHAR"/>
+        <result property="head" column="head" jdbcType="VARCHAR"/>
+        <result property="registerDate" column="register_date" jdbcType="TIMESTAMP"/>
+        <result property="lastLoginDate" column="last_login_date" jdbcType="TIMESTAMP"/>
+        <result property="loginCount" column="login_count" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into seckill.t_user(nickname, password, salt, head, register_date, last_login_date, login_count)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.nickname}, #{entity.password}, #{entity.salt}, #{entity.head}, #{entity.registerDate},
+            #{entity.lastLoginDate}, #{entity.loginCount})
+        </foreach>
+    </insert>
+    <!-- 批量插入或按主键更新 -->
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into seckill.t_user(nickname, password, salt, head, register_date, last_login_date, login_count)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.nickname}, #{entity.password}, #{entity.salt}, #{entity.head}, #{entity.registerDate},
+            #{entity.lastLoginDate}, #{entity.loginCount})
+        </foreach>
+        on duplicate key update
+        nickname = values(nickname) , password = values(password) , salt = values(salt) , head = values(head) ,
+        register_date = values(register_date) , last_login_date = values(last_login_date) , login_count =
+        values(login_count)
+    </insert>
+
+</mapper>
+

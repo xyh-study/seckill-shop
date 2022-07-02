@@ -1,0 +1,25 @@
+2022-01-18 14:43:51,294 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2022-01-18 14:43:51,305 INFO o.a.j.JMeter: Loading user properties from: user.properties
+2022-01-18 14:43:51,305 INFO o.a.j.JMeter: Loading system properties from: system.properties
+2022-01-18 14:43:51,306 INFO o.a.j.JMeter: Copyright (c) 1998-2020 The Apache Software Foundation
+2022-01-18 14:43:51,306 INFO o.a.j.JMeter: Version 5.3
+2022-01-18 14:43:51,306 INFO o.a.j.JMeter: java.version=1.8.0_261
+2022-01-18 14:43:51,306 INFO o.a.j.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+2022-01-18 14:43:51,306 INFO o.a.j.JMeter: os.name=Windows 10
+2022-01-18 14:43:51,307 INFO o.a.j.JMeter: os.arch=amd64
+2022-01-18 14:43:51,307 INFO o.a.j.JMeter: os.version=10.0
+2022-01-18 14:43:51,307 INFO o.a.j.JMeter: file.encoding=GBK
+2022-01-18 14:43:51,307 INFO o.a.j.JMeter: java.awt.headless=null
+2022-01-18 14:43:51,308 INFO o.a.j.JMeter: Max memory     =1073741824
+2022-01-18 14:43:51,308 INFO o.a.j.JMeter: Available Processors =8
+2022-01-18 14:43:51,311 INFO o.a.j.JMeter: Default Locale=English (EN)
+2022-01-18 14:43:51,311 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2022-01-18 14:43:51,311 INFO o.a.j.JMeter: JMeterHome=D:\BaiduNetdiskDownload\ÃëÉ±-Ðû´«\003_software\apache-jmeter-5.3
+2022-01-18 14:43:51,312 INFO o.a.j.JMeter: user.dir  =D:\BaiduNetdiskDownload\ÃëÉ±-Ðû´«\003_software\apache-jmeter-5.3\bin
+2022-01-18 14:43:51,312 INFO o.a.j.JMeter: PWD       =D:\BaiduNetdiskDownload\ÃëÉ±-Ðû´«\003_software\apache-jmeter-5.3\bin
+2022-01-18 14:43:55,848 INFO o.a.j.JMeter: IP: 192.168.142.1 Name: WINDOWS-9OFFM0K FullName: WINDOWS-9OFFM0K
+2022-01-18 14:43:55,917 INFO o.a.j.JMeter: Setting LAF to: com.github.weisj.darklaf.DarkLaf:com.github.weisj.darklaf.theme.DarculaTheme
+2022-01-18 14:43:56,077 INFO o.a.j.JMeter: Loaded icon properties from org/apache/jmeter/images/icon.properties
+2022-01-18 14:44:11,549 INFO o.a.j.u.JMeterUtils: Setting Locale to zh_CN
+2022-01-18 14:44:34,550 INFO o.a.j.s.FileServer: Default base='D:\BaiduNetdiskDownload\ÃëÉ±-Ðû´«\003_software\apache-jmeter-5.3\bin'
+2022-01-18 14:44:39,750 INFO o.a.j.g.a.t.TemplateManager: Reading templates from: D:\BaiduNetdiskDownload\ÃëÉ±-Ðû´«\003_software\apache-jmeter-5.3\bin\templates\templates.xml

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.njpi.xyh.seckill.dao.GoodsDao">
+
+    <resultMap type="com.njpi.xyh.seckill.entity.Goods" id="GoodsMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="goodsName" column="goods_name" jdbcType="VARCHAR"/>
+        <result property="goodsTitle" column="goods_title" jdbcType="VARCHAR"/>
+        <result property="goodsImg" column="goods_img" jdbcType="VARCHAR"/>
+        <result property="goodsDetail" column="goods_detail" jdbcType="VARCHAR"/>
+        <result property="goodsPrice" column="goods_price" jdbcType="NUMERIC"/>
+        <result property="goodsStock" column="goods_stock" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into seckill.t_goods(goods_name, goods_title, goods_img, goods_detail, goods_price, goods_stock)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.goodsName}, #{entity.goodsTitle}, #{entity.goodsImg}, #{entity.goodsDetail}, #{entity.goodsPrice},
+            #{entity.goodsStock})
+        </foreach>
+    </insert>
+    <!-- 批量插入或按主键更新 -->
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into seckill.t_goods(goods_name, goods_title, goods_img, goods_detail, goods_price, goods_stock)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.goodsName}, #{entity.goodsTitle}, #{entity.goodsImg}, #{entity.goodsDetail}, #{entity.goodsPrice},
+            #{entity.goodsStock})
+        </foreach>
+        on duplicate key update
+        goods_name = values(goods_name) , goods_title = values(goods_title) , goods_img = values(goods_img) ,
+        goods_detail = values(goods_detail) , goods_price = values(goods_price) , goods_stock = values(goods_stock)
+    </insert>
+
+
+
+    <select id="selectGoodsVo" resultType="com.njpi.xyh.seckill.vo.GoodsVo">
+        SELECT
+            t_goods.`goods_detail`,
+            t_goods.`goods_img`,
+            t_goods.`goods_name`,
+            t_goods.`goods_price`,
+            t_goods.`goods_stock`,
+            t_goods.`goods_title`,
+            t_goods.`id`,
+            t_seckill_goods.`seckill_price`,
+            t_seckill_goods.`start_date`,
+            t_seckill_goods.`end_date`,
+            t_seckill_goods.`stock_count`
+        FROM t_goods  JOIN t_seckill_goods WHERE t_goods.`id` = t_seckill_goods.`goods_id`;
+    </select>
+    <select id="queryGoodsVoById" resultType="com.njpi.xyh.seckill.vo.GoodsVo">
+        SELECT
+            t_goods.`goods_detail`,
+            t_goods.`goods_img`,
+            t_goods.`goods_name`,
+            t_goods.`goods_price`,
+            t_goods.`goods_stock`,
+            t_goods.`goods_title`,
+            t_goods.`id`,
+            t_seckill_goods.`seckill_price`,
+            t_seckill_goods.`start_date`,
+            t_seckill_goods.`end_date`,
+            t_seckill_goods.`stock_count`
+        FROM t_goods  JOIN t_seckill_goods WHERE t_goods.`id` = t_seckill_goods.`goods_id`
+        <if test="id != null">
+            and t_goods.id = #{id}
+        </if>
+
+    </select>
+
+</mapper>
+

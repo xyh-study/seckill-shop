@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.njpi.xyh.seckill.dao.SeckillOrderDao">
+
+    <resultMap type="com.njpi.xyh.seckill.entity.SeckillOrder" id="SeckillOrderMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="orderId" column="order_id" jdbcType="INTEGER"/>
+        <result property="goodsId" column="goods_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into seckill.t_seckill_order(user_id, order_id, goods_id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.userId}, #{entity.orderId}, #{entity.goodsId})
+        </foreach>
+    </insert>
+    <!-- 批量插入或按主键更新 -->
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into seckill.t_seckill_order(user_id, order_id, goods_id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.userId}, #{entity.orderId}, #{entity.goodsId})
+        </foreach>
+        on duplicate key update
+        user_id = values(user_id) , order_id = values(order_id) , goods_id = values(goods_id)
+    </insert>
+
+</mapper>
+
